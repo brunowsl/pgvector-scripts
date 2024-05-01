@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  postgres:
+    build: .
+    environment:
+      POSTGRES_PASSWORD: postgres # Defina sua senha desejada aqui
+      POSTGRES_USER: postgres # Defina o usuário desejado aqui
+      POSTGRES_DB: postgres_vector # Defina o banco de dados desejado aqui
+    volumes:
+      - meu-volume-postgres:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+
+volumes:
+  meu-volume-postgres:
+    driver: local
